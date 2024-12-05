@@ -11,9 +11,5 @@ export interface DatabaseOptions {
   max?: number;
 }
 
-export const {
-  ConfigurableModuleClass: ConfigurableDatabaseModule,
-  MODULE_OPTIONS_TOKEN: DATABASE_OPTIONS,
-} = new ConfigurableModuleBuilder<DatabaseOptions>()
-  .setClassMethodName('forRoot')
-  .build();
+export const { ConfigurableModuleClass: ConfigurableDatabaseModule, MODULE_OPTIONS_TOKEN: DATABASE_OPTIONS } =
+  new ConfigurableModuleBuilder<DatabaseOptions>().setClassMethodName('forRoot').build();
