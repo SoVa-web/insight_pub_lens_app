@@ -9,8 +9,8 @@ import {
 import { DatabaseService } from './database.service';
 
 const logger = new Logger(DatabaseService.name);
-console.log({CONNECTION_POOL})
-console.log({DATABASE_OPTIONS})
+console.log({ CONNECTION_POOL });
+console.log({ DATABASE_OPTIONS });
 
 @Global()
 @Module({

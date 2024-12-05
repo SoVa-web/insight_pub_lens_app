@@ -1,1 +1,1 @@
-export const TABLE_PUBLICATIONS = "Publications"
+export const TABLE_PUBLICATIONS = 'Publications';

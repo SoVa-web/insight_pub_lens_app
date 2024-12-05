@@ -1,20 +1,45 @@
 module.exports = {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-      project: './tsconfig.json',
-      ecmaVersion: 2020,
-      sourceType: 'module',
-    },
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    rules: {
-      'prettier/prettier': 'error',
-      '@typescript-eslint/no-unused-vars': 'warn', 
-      'import/no-unresolved': 'off', 
-      'no-console': 'warn', 
-    },
-  };
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    project: 'tsconfig.json',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin', 'simple-import-sort', 'import'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'prettier',
+  ],
+  settings: {
+    'import/resolver': { node: true, typescript: true },
+  },
+  rules: {
+    'no-lonely-if': ['off'],
+    indent: ['error', 2, { SwitchCase: 1 }],
+    'no-nested-ternary': ['off'],
+    'no-loop-func': ['warn'],
+    'no-global-assign': ['error'],
+    'no-shadow-restricted-names': ['error'],
+    'prefer-arrow-callback': ['warn'],
+    'prefer-const': ['warn'],
+    'object-shorthand': ['warn'],
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
+    'template-curly-spacing': ['error', 'never'],
+    'no-var': ['error'],
+    'rest-spread-spacing': ['warn', 'never'],
+    'prefer-rest-params': ['warn'],
+    'prefer-spread': ['warn'],
+    '@typescript-eslint/no-use-before-define': ['warn', { typedefs: false, functions: false }],
+    '@typescript-eslint/consistent-type-assertions': [
+      'warn',
+      { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow-as-parameter' },
+    ],
+    '@typescript-eslint/switch-exhaustiveness-check': ['error'],
+    '@typescript-eslint/no-unused-vars': ['off'],
+    '@typescript-eslint/require-await': ['off'],
+    '@typescript-eslint/no-floating-promises': ['off']
+  },
+};
