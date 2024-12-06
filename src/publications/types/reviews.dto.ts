@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import { number } from 'joi';
 
 export class Keywords {
   @ApiProperty()
@@ -12,14 +13,8 @@ export class Keywords {
 }
 
 export class ReviewRequestDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  query!: string;
-
   @ApiProperty({ type: [Keywords], required: false })
-  @IsOptional()
-  keywords?: Keywords[];
+  keywords!: Keywords[];
 
   @ApiProperty()
   @IsOptional()
@@ -29,7 +24,7 @@ export class ReviewRequestDto {
 
 export class ReviewResponseDto {
   @ApiProperty()
-  id!: string;
+  id!: number;
 
   @ApiProperty()
   @IsString()
@@ -50,6 +45,16 @@ export class ReviewResponseDto {
   @IsOptional()
   @IsString()
   journal_ref?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  source?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  id_from_source?: string;
 
   @ApiProperty()
   @IsArray()
@@ -73,4 +78,32 @@ export class ReviewResponseDto {
   @ApiProperty()
   @IsNumber()
   value!: number;
+}
+
+class RangeStats {
+  @ApiProperty()
+  range!: string;
+
+  @ApiProperty()
+  count!: number;
+}
+
+export class SearchResponseDto {
+  @ApiProperty({
+    type: [ReviewResponseDto],
+  })
+  reviews!: ReviewResponseDto[];
+
+  @ApiProperty()
+  total!: number;
+
+  @ApiProperty({
+    type: [RangeStats],
+  })
+  stat!: RangeStats[];
+
+  @ApiProperty({
+    type: [Number],
+  })
+  arrayValue!: number[];
 }

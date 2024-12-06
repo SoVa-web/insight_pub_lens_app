@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import Joi from 'joi';
+import { PublicationsModule } from './publications/publications.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import Joi from 'joi';
         max: 100,
       }),
     }),
+    PublicationsModule,
   ],
 })
 export class AppModule {}
