@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/switch-exhaustiveness-check': ['error'],
     '@typescript-eslint/no-unused-vars': ['off'],
     '@typescript-eslint/require-await': ['off'],
-    '@typescript-eslint/no-floating-promises': ['off']
+    '@typescript-eslint/no-floating-promises': ['off'],
+    '@typescript-eslint/restrict-template-expressions': ['off']
   },
 };
