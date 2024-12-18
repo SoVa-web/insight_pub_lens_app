@@ -26,6 +26,7 @@ export class PublicationsService {
       const scores = this.score(dto.keywords, preprocessData);
       let rangedData = this.ranging(scores.result);
       rangedData = this.createLinks(rangedData);
+      rangedData = rangedData.filter(item => item.value !== 0)
       return {
         reviews: rangedData,
         total: rangedData.length,
@@ -38,6 +39,16 @@ export class PublicationsService {
     }
   }
 
+  async getReview(id: number): Promise<PublicationModel> {
+    let data: PublicationModel | null = await this.publicationsRepository.getReview(id);
+    if (!data) {
+      this.logger.error('Error in getReview method');
+      throw new HttpException(`Error get publication: ${id}`, 500);
+    }
+    data = this.createLink(data)
+    return data
+  }
+
   createLinks(rangedData: ReviewResponseDto[]): ReviewResponseDto[] {
     const res = rangedData.map((r) => {
       if (r.source === 'arXiv') {
@@ -47,6 +58,15 @@ export class PublicationsService {
     });
 
     return res;
+  }
+
+  createLink(publication: PublicationModel): PublicationModel {
+
+    if (publication.source === 'arXiv') {
+      publication.link = 'https://arxiv.org/abs/' + publication.id_from_source;
+    }
+    return publication;
+
   }
 
   ranging(data: ReviewResponseDto[]): ReviewResponseDto[] {

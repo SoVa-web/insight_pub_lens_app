@@ -5,105 +5,114 @@ import { number } from 'joi';
 export class Keywords {
   @ApiProperty()
   @IsString()
-  keyword!: string;
+    keyword!: string;
 
   @ApiProperty()
   @IsNumber()
-  priority!: number;
+    priority!: number;
 }
 
 export class ReviewRequestDto {
   @ApiProperty({ type: [Keywords], required: false })
-  keywords!: Keywords[];
+    keywords!: Keywords[];
+
+  @ApiPropertyOptional()
+    title?: string;
+
+  @ApiPropertyOptional()
+    author?: string;
+
+  @ApiPropertyOptional()
+    year?: string;
 
   @ApiProperty()
   @IsOptional()
   @IsNumber()
-  numberOfResult?: number;
+    numberOfResult?: number;
 }
 
 export class ReviewResponseDto {
   @ApiProperty()
-  id!: number;
+    id!: number;
 
   @ApiProperty()
   @IsString()
   @IsOptional()
-  title?: string;
+    title?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
-  abstract?: string;
+    abstract?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
-  authors?: string;
+    authors?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
-  journal_ref?: string;
+    journal_ref?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
-  source?: string;
+    source?: string;
 
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
-  id_from_source?: string;
+    id_from_source?: string;
 
   @ApiProperty()
   @IsArray()
-  keywords!: string[];
+    keywords!: string[];
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
-  doi?: string;
+    doi?: string;
 
   @ApiPropertyOptional()
   @IsString()
   @IsOptional()
-  link?: string;
+    link?: string;
 
   @ApiPropertyOptional()
   @IsNumber()
   @IsOptional()
-  year?: number;
+    year?: number;
 
   @ApiProperty()
   @IsNumber()
-  value!: number;
+    value!: number;
 }
 
 class RangeStats {
   @ApiProperty()
-  range!: string;
+    range!: string;
 
   @ApiProperty()
-  count!: number;
+    count!: number;
 }
 
 export class SearchResponseDto {
   @ApiProperty({
     type: [ReviewResponseDto],
   })
-  reviews!: ReviewResponseDto[];
+    reviews!: ReviewResponseDto[];
 
   @ApiProperty()
-  total!: number;
+    total!: number;
 
   @ApiProperty({
     type: [RangeStats],
   })
-  stat!: RangeStats[];
+    stat!: RangeStats[];
 
   @ApiProperty({
     type: [Number],
   })
-  arrayValue!: number[];
+    arrayValue!: number[];
 }

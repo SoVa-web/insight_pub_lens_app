@@ -9,6 +9,7 @@ import { PublicationsModule } from './publications/publications.module';
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
+        APP_UI: Joi.string().required(),
         APP_URL: Joi.string().required(),
         APP_PORT: Joi.number().default(3000),
         POSTGRES_HOST: Joi.string().required(),
