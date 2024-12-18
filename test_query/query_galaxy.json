@@ -1,0 +1,18 @@
+{
+    "keywords": [
+      {
+        "keyword": "dark matter",
+        "priority": 0.25
+      },{
+        "keyword": "astronomy",
+        "priority": 0.25
+      },{
+        "keyword": "galaxy cluster",
+        "priority": 0.25
+      },{
+        "keyword": "infrared galaxies",
+        "priority": 0.25
+      }
+    ],
+    "numberOfResult": 0
+  }
